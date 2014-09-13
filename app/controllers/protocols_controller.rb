@@ -15,11 +15,13 @@ class ProtocolsController < ApplicationController
   # GET /protocols/new
   def new
     @protocol = Protocol.new
+    @protocol.topics.build
   end
 
   # GET /protocols/1/edit
   def edit
     @protocol = Protocol.find(params[:id])
+   byebug 
     if @protocol.topics.last.nil? || !@protocol.topics.last.new_record?
       @protocol.topics.build
     end
@@ -29,7 +31,6 @@ class ProtocolsController < ApplicationController
   # POST /protocols.json
   def create
     @protocol = Protocol.new(protocol_params)
-    @protocol.topics.build
     respond_to do |format|
       if @protocol.save
         format.html { redirect_to @protocol, notice: 'Protocol was successfully created.' }
