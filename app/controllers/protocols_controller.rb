@@ -21,7 +21,6 @@ class ProtocolsController < ApplicationController
   # GET /protocols/1/edit
   def edit
     @protocol = Protocol.find(params[:id])
-   byebug 
     if @protocol.topics.last.nil? || !@protocol.topics.last.new_record?
       @protocol.topics.build
     end
