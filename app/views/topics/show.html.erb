@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Headline:</strong>
+  <%= @topic.headline %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @topic.text %>
+</p>
+
+<p>
+  <strong>Protocol:</strong>
+  <%= @topic.protocol %>
+</p>
+
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>
