@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  creator: MyString
+  dateCreated: 2014-09-13
+  dateSent: 2014-09-13
+  text: MyText
+
+two:
+  creator: MyString
+  dateCreated: 2014-09-13
+  dateSent: 2014-09-13
+  text: MyText
