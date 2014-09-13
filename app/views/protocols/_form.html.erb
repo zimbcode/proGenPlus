@@ -29,6 +29,11 @@
 	<p>
 		<%= ft.object.text %>
 	</p>
+	<p><b>tags</b>
+		<% for tag in ft.object.tags %>
+			<%= label_tag(tag.name) %>
+		<% end %>
+	</p>
     <% else %>
    	 <p>
 		<%= ft.label :headline %><br/>

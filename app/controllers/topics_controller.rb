@@ -67,6 +67,7 @@ class TopicsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
       @topic = Topic.find(params[:id])
+      @tags = @topic.tags
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

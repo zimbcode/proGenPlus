@@ -70,10 +70,11 @@ class ProtocolsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_protocol
       @protocol = Protocol.find(params[:id])
+      @pro_tags = @protocol.tags
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def protocol_params
-      params.require(:protocol).permit(:creator, :dateCreated, :dateSent, :text, topics_attributes: [:id, :headline, :text, :protocol_id])
+      params.require(:protocol).permit(:creator, :dateCreated, :dateSent, :text, topics_attributes: [:id, :headline, :text, :protocol_id, :tags])
     end
 end
