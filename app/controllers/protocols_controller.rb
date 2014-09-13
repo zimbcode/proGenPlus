@@ -23,6 +23,7 @@ class ProtocolsController < ApplicationController
     @protocol = Protocol.find(params[:id])
     if @protocol.topics.last.valid?
       @protocol.topics.build
+      @protocol.topics.last.topic_tags.build
       puts @protocol.topics.last.inspect
     end
   end
@@ -75,6 +76,6 @@ class ProtocolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def protocol_params
-      params.require(:protocol).permit(:creator, :dateCreated, :dateSent, :text, topics_attributes: [:id, :headline, :text, :protocol_id, :tags])
+      params.require(:protocol).permit(:creator, :dateCreated, :dateSent, :text, topics_attributes: [:id, :headline, :text, :protocol_id, topic_tags_attributes: [:id, :tag_id, :topic_id]])
     end
 end

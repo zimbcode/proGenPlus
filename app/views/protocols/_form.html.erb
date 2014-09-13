@@ -44,6 +44,15 @@
 		<%= ft.text_area :text %>
 	    </p>
 	    <p>
+
+		<%= ft.fields_for :topic_tags do |tt| %>
+			<%= Tag.all.each do |tag| %>
+				<%= tt.check_box :tag_id, value: tag.id  %>
+				<%= tt.hidden_field :topic_id, value: 10101010101010101010  %>
+                        <% end %>			
+		<% end %>
+	    </p>
+	    <p>
 		<%= ft.hidden_field :protocol_id, value: f.object.id%>
 		<%= f.submit %>
 	    </p>
