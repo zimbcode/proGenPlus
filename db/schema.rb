@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913155456) do
+ActiveRecord::Schema.define(version: 20140913101324) do
 
   create_table "protocols", force: true do |t|
     t.string   "creator"
@@ -20,20 +20,6 @@ ActiveRecord::Schema.define(version: 20140913155456) do
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "tags", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "topic_tags", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "topic_id"
-    t.integer  "tag_id"
   end
 
   create_table "topics", force: true do |t|

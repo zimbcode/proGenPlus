@@ -39,3 +39,10 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'byebug'
 gem 'rails-erd'
+
+
+# Markdown
+gem 'redcarpet'
+
+# PDF Prawn
+gem 'prawn'

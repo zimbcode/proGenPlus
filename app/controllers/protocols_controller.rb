@@ -10,6 +10,12 @@ class ProtocolsController < ApplicationController
   # GET /protocols/1
   # GET /protocols/1.json
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.pdf do
+        send_data @protocol.to_pdf!, filename: @protocol.filename, type: 'application/pdf'
+      end
+    end
   end
 
   # GET /protocols/new
@@ -71,7 +77,7 @@ class ProtocolsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_protocol
       @protocol = Protocol.find(params[:id])
-      @pro_tags = @protocol.tags
+#      @pro_tags = @protocol.tags
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
