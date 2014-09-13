@@ -1,0 +1,9 @@
+##########################################
+#                                        #
+#              TODOs                     #
+#                                        #
+##########################################
+
+- date created mit aktuellen timestamp
+- präsenzen aus MR
+- termine (event calendar aus MR)

@@ -16,3 +16,5 @@ vendor/bundle
 /log/*.log
 /tmp
 .DS_Store
+
+*.swp
