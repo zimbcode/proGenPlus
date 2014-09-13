@@ -21,8 +21,9 @@ class ProtocolsController < ApplicationController
   # GET /protocols/1/edit
   def edit
     @protocol = Protocol.find(params[:id])
-    if @protocol.topics.last.nil? || !@protocol.topics.last.new_record?
+    if @protocol.topics.last.valid?
       @protocol.topics.build
+      puts @protocol.topics.last.inspect
     end
   end
 
@@ -73,6 +74,6 @@ class ProtocolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def protocol_params
-      params.require(:protocol).permit(:creator, :dateCreated, :dateSent, :text, topics_attributes: [:headline, :text, :protocol_id])
+      params.require(:protocol).permit(:creator, :dateCreated, :dateSent, :text, topics_attributes: [:id, :headline, :text, :protocol_id])
     end
 end
