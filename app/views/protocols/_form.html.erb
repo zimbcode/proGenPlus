@@ -19,6 +19,32 @@
     <%= f.label :dateCreated %><br>
     <%= f.date_select :dateCreated %>
   </div>
+
+  <h1>topics</h1>
+  <%= f.fields_for :topics do |ft|%>
+    <% if !ft.object.new_record? %>
+	<p>
+		<strong><%= ft.object.headline %></strong>
+	</p>
+	<p>
+		<%= ft.object.text %>
+	</p>
+    <% else %>
+   	 <p>
+		<%= ft.label :headline %><br/>
+		<%= ft.text_field :headline%>
+    	</p>
+    	<p>
+		<%= ft.label :text %><br/>
+		<%= ft.text_area :text %>
+	    </p>
+	    <p>
+		<%= ft.hidden_field :protocol_id, value: f.object.id%>
+		<%= f.submit %>
+	    </p>
+    <% end %>
+  <% end %>
+
   <div class="field">
     <%= f.label :dateSent %><br>
     <%= f.date_select :dateSent %>

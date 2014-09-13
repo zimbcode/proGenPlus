@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913094403) do
+ActiveRecord::Schema.define(version: 20140913101324) do
 
   create_table "protocols", force: true do |t|
     t.string   "creator"
@@ -21,5 +21,15 @@ ActiveRecord::Schema.define(version: 20140913094403) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "topics", force: true do |t|
+    t.string   "headline"
+    t.text     "text"
+    t.integer  "protocol_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topics", ["protocol_id"], name: "index_topics_on_protocol_id"
 
 end

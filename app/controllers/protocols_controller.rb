@@ -19,13 +19,17 @@ class ProtocolsController < ApplicationController
 
   # GET /protocols/1/edit
   def edit
+    @protocol = Protocol.find(params[:id])
+    if @protocol.topics.last.nil? || !@protocol.topics.last.new_record?
+      @protocol.topics.build
+    end
   end
 
   # POST /protocols
   # POST /protocols.json
   def create
     @protocol = Protocol.new(protocol_params)
-
+    @protocol.topics.build
     respond_to do |format|
       if @protocol.save
         format.html { redirect_to @protocol, notice: 'Protocol was successfully created.' }
@@ -69,6 +73,6 @@ class ProtocolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def protocol_params
-      params.require(:protocol).permit(:creator, :dateCreated, :dateSent, :text)
+      params.require(:protocol).permit(:creator, :dateCreated, :dateSent, :text, topics_attributes: [:headline, :text, :protocol_id])
     end
 end
