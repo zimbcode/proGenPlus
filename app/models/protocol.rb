@@ -82,7 +82,7 @@ class Protocol < ActiveRecord::Base
 	   else
 	   	size = "10.pt"
 	   end
-	   "pdf.text '#{text}', inline_format: :true, size: " + size + ", style: :bold\n"
+	   "pdf.text '#{text}', inline_format: :true, size: " + size + ", style: :bold\npdf.move_down 5.mm\n"
 	 end
 
 	 def paragraph(text)
@@ -107,6 +107,10 @@ class Protocol < ActiveRecord::Base
 
 	 def normal_text(text)
 	   "#{text}"
+	 end
+
+	 def block_quote(text)
+	   "pdf.text_box '" + "#{text}'\n".gsub("', inline_format: :true\n",'').gsub("pdf.text '",'').rstrip + ", at: [10.mm, pdf.cursor]\npdf.move_down 20.pt\n"
 	 end
 
 	 def list(text, something)
