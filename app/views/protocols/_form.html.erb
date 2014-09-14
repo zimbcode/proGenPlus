@@ -46,7 +46,7 @@
 	    <p>
 
 		<%= ft.fields_for :topic_tags do |tt| %>
-			<%= select tt, :tag_id, Tag.all.collect{|t|[t.name]},{},multiple: true %>
+			<%= select tt,  :tag_id, Tag.all.collect{|t|[t.name, t.id]},{}, multiple: true %>
 			<%= tt.hidden_field :topic_id, value: Time.now.strftime("%Y%m%d%H%M%S%12N")  %>
 		<% end %>
 	    </p>

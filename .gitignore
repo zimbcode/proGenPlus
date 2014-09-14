@@ -17,6 +17,7 @@ vendor/bundle
 /tmp
 .DS_Store
 
+/test/*
 *.swp
 *.lock
 *.pdf
