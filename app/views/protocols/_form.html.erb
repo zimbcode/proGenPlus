@@ -46,14 +46,12 @@
 	    <p>
 
 		<%= ft.fields_for :topic_tags do |tt| %>
-			<%= Tag.all.each do |tag| %>
-				<%= tt.check_box :tag_id, value: tag.id  %>
-				<%= tt.hidden_field :topic_id, value: 10101010101010101010  %>
-                        <% end %>			
+			<%= select tt, :tag_id, Tag.all.collect{|t|[t.name]},{},multiple: true %>
+			<%= tt.hidden_field :topic_id, value: Time.now.strftime("%Y%m%d%H%M%S%12N")  %>
 		<% end %>
 	    </p>
 	    <p>
-		<%= ft.hidden_field :protocol_id, value: f.object.id%>
+		<%= ft.hidden_field :protocol_id, value: f.object.id %>
 		<%= f.submit %>
 	    </p>
     <% end %>
