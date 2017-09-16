@@ -24,6 +24,7 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
+    puts params
     @protocol = Protocol.find(params[:protocol_id])
     @topic = @protocol.topics.create(topic_params)
     redirect_to protocol_path(@protocol)

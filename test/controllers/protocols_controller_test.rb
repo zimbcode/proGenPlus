@@ -18,30 +18,30 @@ class ProtocolsControllerTest < ActionController::TestCase
 
   test "should create protocol" do
     assert_difference('Protocol.count') do
-      post :create, protocol: { creator: @protocol.creator, dateCreated: @protocol.dateCreated, dateSent: @protocol.dateSent, text: @protocol.text }
+      post :create, params: { protocol: { creator: @protocol.creator, dateCreated: @protocol.dateCreated, dateSent: @protocol.dateSent, text: @protocol.text } }
     end
 
     assert_redirected_to protocol_path(assigns(:protocol))
   end
 
   test "should show protocol" do
-    get :show, id: @protocol
+    get :show, params: { id: @protocol }
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @protocol
+    get :edit, params: { id: @protocol }
     assert_response :success
   end
 
   test "should update protocol" do
-    patch :update, id: @protocol, protocol: { creator: @protocol.creator, dateCreated: @protocol.dateCreated, dateSent: @protocol.dateSent, text: @protocol.text }
+    patch :update, params: {id: @protocol, protocol: { creator: @protocol.creator, dateCreated: @protocol.dateCreated, dateSent: @protocol.dateSent, text: @protocol.text } }
     assert_redirected_to protocol_path(assigns(:protocol))
   end
 
   test "should destroy protocol" do
     assert_difference('Protocol.count', -1) do
-      delete :destroy, id: @protocol
+      delete :destroy, params: { id: @protocol }
     end
 
     assert_redirected_to protocols_path

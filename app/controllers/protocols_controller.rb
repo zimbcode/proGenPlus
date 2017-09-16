@@ -1,3 +1,6 @@
+
+require 'pp'
+
 class ProtocolsController < ApplicationController
   before_action :set_protocol, only: [:show, :edit, :update, :destroy]
 
@@ -27,6 +30,7 @@ class ProtocolsController < ApplicationController
   # GET /protocols/1/edit
   def edit
     @protocol = Protocol.find(params[:id])
+    pp @protocol
     if @protocol.topics.last.valid?
       @protocol.topics.build
       @protocol.topics.last.topic_tags.build
@@ -83,7 +87,7 @@ class ProtocolsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def protocol_params
       params.require(:protocol)
-	.permit(:creator, :dateCreated, :dateSent, :text, 
+	.permit(:creator, :dateCreated, :dateSent, :text,
 		topics_attributes: [:id, :headline, :text, :protocol_id,
 			topic_tags_attributes: [:id, :tag_id, :topic_id]])
     end
